@@ -62,6 +62,8 @@ function displayBlock() {
     //caller
     document.getElementById('calling').style.display = "block";
     document.getElementById('callCutBtn').style.display = "block";
+    document.getElementById('callingTitle').style.display = 'block';
+
 
     //receiver
     document.getElementById('receiving').style.display = "block";
@@ -80,6 +82,7 @@ function displayBlock() {
 function callCut() {
     document.getElementById('callCutBtn').style.display = 'none';
     document.getElementById('receiverCallSummary').style.display = 'block';
+    document.getElementById('callingTitle').style.display = 'none';
 
     document.getElementById('okBtn').style.display = "block";
     document.getElementById('phoneNumber').style.display = "none";
