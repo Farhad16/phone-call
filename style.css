@@ -2,18 +2,18 @@
     box-sizing: border-box;
 }
 body {
-    background: #10101B;
+    background: #9be3f5;
     height: 100vh;
+    outline: none;
 }
 .container {
     margin-top: 30px;
 }
 
 .half-width {
-    height: 570px;
-    background: #222436;
-    padding: 30px;
+    /* padding: 30px; */
     text-align: center;
+    border-radius: 10px;
 }
 .generate-btn{
     margin-top: 140px;
@@ -33,13 +33,13 @@ body {
 }
 
 input[type='text']{
-    background-color: #3D4153;
-    padding: 10px 0px;
-    color: #ffffff;
-    width: 80%;
+    background-color: #f1f2f7;;
+    color: #000000;
+    font-weight: bold;
+    width: 100%;
     margin: 0 auto;
-    border: 2px solid #858299;
-    height: 50px;
+    border: 1px solid #bbbac2;
+    height: 180px;
     padding: 10px;
 }
 input[type='text']:focus {
@@ -47,34 +47,29 @@ input[type='text']:focus {
     color: #fff;
     font-size: 20px;
 }
-.numbers {
-    margin: 30px 0;
-}
 
-.calc-typed {
-margin-top: 20px;
-font-size: 45px;
-text-align: right;
-color: #fff;
-}
 
+.calc-body{
+    width: 100%;
+    background-color: #fff;
+}
 .calc-button-row {
-width: 100%;
+    width: 100%;
 }
 
 .button {
-width: 20%;
-background: #425062;
-color: #fff;
-padding: 20px 0;
-margin: 5px;
-display: inline-block;
-font-size: 25px;
-text-align: center;
-vertical-align: middle;
-margin-right: -4px;
-border-radius: 10px;
-cursor: pointer;
+    width: 20%;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 5px 0;
+    margin: 5px;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    /* vertical-align: middle; */
+    border-radius: 10px;
+    cursor: pointer;
 }
 .blink-me {
 color: #E0B612;
@@ -114,4 +109,142 @@ color: #E0B612;
 
 #submit{
     outline: none;
+}
+
+.call{
+    background-color: rgb(34, 180, 34);
+}
+
+.display{
+    display: flex;
+}
+
+.inp{
+    position: relative;
+}
+.cross{
+    position: absolute;
+    right: 130px;
+    top: 40px;
+    cursor: pointer;
+}
+
+.calling{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    border: 1px solid gainsboro;
+}
+
+.callCutBtn{
+    border: 2px solid rgb(175, 11, 11);
+    background-color: rgb(238, 22, 22);
+    padding: 5px 25px;
+    font-size: 15px;
+    border-radius: 10px;
+
+}
+.receiving{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    border: 1px solid gainsboro;
+}
+
+.callRecBtn{
+    border: 2px solid rgb(20, 211, 20);
+    background-color: rgb(9, 197, 34);
+    padding: 5px 25px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.space{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* The device with borders */
+.smartphone {
+  position: relative;
+  width: 360px;
+  height: 600px;
+  margin: auto;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+}
+
+/* The horizontal line on the top of the device */
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
+}
+
+/* The circle on the bottom of the device */
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 50%;
+}
+
+
+.smartphone .content {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+#okBtn {
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid gainsboro;
+    display: none;
+}
+
+#recOkBtn {
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid gainsboro;
+}
+
+.showInvalidNumber{
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    border: 1px solid gainsboro;
+    text-align: center;
+}
+
+#invalidHideBtn{
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 1px solid gainsboro;
+}
+
+#receiverCallSummary{
+    display: none;
 }
