@@ -108,8 +108,6 @@ function cutMessage() {
 // Clear the receiver screen
 function recScreenClr() {
     document.getElementById('receiving').style.display = 'none';
-    document.getElementById('recOkBtn').style.display = 'none';
-    location.reload();
 }
 
 // Show the input screen when click the invalid number message
@@ -167,15 +165,12 @@ function callReceive() {
 
 
 function stopTime() {
-    console.log("stop");
     clearInterval(stopTimes);
-    console.log("Call Duration", totalSeconds);
     const operator = document.getElementById("operator").innerText;
     const bill = calBill(operator, totalSeconds);
     const taka = bill / 100;
-    console.log(taka.toFixed(2));
     let duration = document.getElementById('duration')
-    duration.innerText = `Duration   ${duration.innerText} \n See Cost Tk  ${taka}`;
+    duration.innerText = `Duration   ${duration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
 
 }
 
