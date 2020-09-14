@@ -14,9 +14,9 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="half-width">
-                    <div class="smartphone">
+                    <div class="smartphone" id="callerPart">
                         <div class="content">
                             <div class="calling" id="calling">
                                 <h3 id="callingTitle" style="text-align: left;">Calling.........</h3>
@@ -79,8 +79,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="half-width">
+            <div class="col-md-4" id="transferPart">
+                <div id="transferCall">
+                    <p id="companyDuration"><label id="companyMinutes">00</label>:<label id="companySeconds">00</label>
+                    </p>
+                    <p id="totalCost"></p>
+                    <p id="operator"></p>
+                    <p id="tranferNumber"></p>
+                    <button id="transfer" onclick="transferCall()">Transfer Call</button>
+                    <button id="dismiss" style="background-color: red;" onclick="dismiss()">Dismiss</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="half-width" id="receivePart">
                     <div class="smartphone">
                         <div class="content">
                             <div class="receiving" id="receiving">
@@ -89,7 +100,6 @@
                                     <p id="duringCallTime"><label id="receiverMinutes">00</label>:<label
                                             id="receiverSeconds">00</label>
                                     </p>
-                                    <p id="operator">Operator</p>
                                 </div>
                                 <div class="space" id="receiverBtn">
                                     <button onclick="callCut();stopTime()" class="callCutBtn" id="callCutRecBtn">

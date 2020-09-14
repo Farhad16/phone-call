@@ -8,8 +8,11 @@ function phoneCall() {
     document.getElementById('okBtn').style.display = "none";
 
 
+
     const phoneNumber = document.getElementById('phoneNumber');
     const operatorShow = document.getElementById('operator');
+    const transferNumber = document.getElementById('tranferNumber');
+    transferNumber.innerText = "";
     phoneNumber.innerText = "";
     operatorShow.innerText = "";
 
@@ -24,27 +27,32 @@ function phoneCall() {
         if (operator === "017" || operator === "013") {
             operatorShow.innerText = "Grameenphone";
             phoneNumber.innerText = inputNumber;
-            displayBlock();
+            transferNumber.innerText = inputNumber;
+            tranferPartOpen();
         }
         else if (operator === "018") {
             operatorShow.innerText = "Robi";
             phoneNumber.innerText = inputNumber;
-            displayBlock();
+            transferNumber.innerText = inputNumber;
+            tranferPartOpen();
         }
         else if (operator === "014" || operator === "019") {
             operatorShow.innerText = "Banglalink";
+            transferNumber.innerText = inputNumber;
             phoneNumber.innerText = inputNumber;
-            displayBlock();
+            tranferPartOpen();
         }
         else if (operator === "016") {
             operatorShow.innerText = "Airtel";
+            transferNumber.innerText = inputNumber;
             phoneNumber.innerText = inputNumber;
-            displayBlock();
+            tranferPartOpen();
         }
         else if (operator === "015") {
             operatorShow.innerText = "Teletalk";
+            transferNumber.innerText = inputNumber;
             phoneNumber.innerText = inputNumber;
-            displayBlock();
+            tranferPartOpen();
         }
         else {
             document.getElementById('invalid').style.display = "block"
@@ -57,15 +65,28 @@ function phoneCall() {
 }
 
 
+//transfer Call
+
+function tranferPartOpen() {
+    document.getElementById('callerPart').style.display = "none";
+    document.getElementById('transferPart').style.display = "block";
+}
+
+
+function transferCall() {
+    displayBlock();
+}
 // Responsible for some display none to block
 function displayBlock() {
-    //caller
+    //caller 
     document.getElementById('calling').style.display = "block";
     document.getElementById('callCutBtn').style.display = "block";
     document.getElementById('callingTitle').style.display = 'block';
+    document.getElementById('tranferNumber').style.display = 'block';
 
 
     //receiver
+    document.getElementById('receivePart').style.display = "block";
     document.getElementById('receiving').style.display = "block";
     document.getElementById('receiverBtn').style.display = "flex";
     document.getElementById('callerIdentity').style.display = "block";
@@ -75,6 +96,9 @@ function displayBlock() {
 
     //Phone numbers
     document.getElementById('numbers').style.display = "none";
+
+    //transferPart
+    document.getElementById('transferPart').style.display = "none";
 }
 
 
@@ -86,12 +110,25 @@ function callCut() {
 
     document.getElementById('okBtn').style.display = "block";
     document.getElementById('phoneNumber').style.display = "none";
-    document.getElementById('operator').style.display = "none";
+    // document.getElementById('operator').style.display = "none";
 
     document.getElementById('callCutRecBtn').style.display = "none";
     document.getElementById('callReceiveBtn').style.display = "none";
 
+    //TransferPart
+    document.getElementById('transferPart').style.display = "block";
     document.getElementById('numbers').style.display = "block";
+    document.getElementById('transfer').style.display = "none";
+    document.getElementById('dismiss').style.display = "block";
+
+    //ReceiverPart
+    document.getElementById('receivePart').style.display = "none";
+}
+
+//dismiss button 
+function dismiss() {
+    document.getElementById('callerPart').style.display = "block";
+    document.getElementById('transferPart').style.display = "none";
 }
 
 // Responsible to cut a message
@@ -103,6 +140,7 @@ function cutMessage() {
     document.getElementById('invalid').style.display = "none";
     location.reload();
 }
+
 
 
 // Clear the receiver screen
@@ -140,7 +178,8 @@ function callReceive() {
     const callerSeconds = document.getElementById("callerSeconds");
     const receiverMinutes = document.getElementById("receiverMinutes");
     const receiverSeconds = document.getElementById("receiverSeconds");
-
+    const companyMinutes = document.getElementById("companyMinutes");
+    const companySeconds = document.getElementById("companySeconds");
 
 
     stopTimes = setInterval(setTime, 1000);
@@ -151,6 +190,8 @@ function callReceive() {
         callerMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
         receiverSeconds.innerHTML = pad(totalSeconds % 60);
         receiverMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
+        companySeconds.innerHTML = pad(totalSeconds % 60);
+        companyMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
     }
 
     function pad(val) {
@@ -170,8 +211,9 @@ function stopTime() {
     const bill = calBill(operator, totalSeconds);
     const taka = bill / 100;
     let duration = document.getElementById('duration')
+    let companyDuration = document.getElementById('companyDuration')
     duration.innerText = `Duration   ${duration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
-
+    companyDuration.innerText = `Duration   ${companyDuration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
 }
 
 function calBill(operator, time) {

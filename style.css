@@ -249,3 +249,42 @@ color: #E0B612;
 #receiverCallSummary{
     display: none;
 }
+
+#transferPart{
+    display: none;
+    margin: 0 auto;
+}
+#transferCall button{
+    border: none;
+    cursor: pointer;
+    background-color: rgb(29, 212, 29);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+#transferCall {
+    width: 350px;
+    border: 10px solid black;
+    height: 250px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10px;
+    margin: 150px 0px;
+    padding-top: 30px;
+}
+
+#receivePart{
+    display: none;
+    margin: 0 auto;
+}
+
+#dismiss{
+    display: none;
+    margin: 0 auto;
+}
+
+#callerPart{
+    margin: 0 auto;
+}
