@@ -33,7 +33,7 @@ body {
     box-shadow: none;
 }
 
-input[type='text']{
+.display input[type='text']{
     background-color: #f1f2f7;;
     color: #000000;
     font-weight: bold;
@@ -43,7 +43,7 @@ input[type='text']{
     height: 180px;
     padding: 10px;
 }
-input[type='text']:focus {
+.display input[type='text']:focus {
     background-color: #3D4153;
     color: #fff;
     font-size: 20px;
@@ -266,7 +266,7 @@ color: #E0B612;
 #transferCall {
     width: 350px;
     border: 10px solid black;
-    height: 250px;
+    height: 400px;
     text-align: center;
     box-sizing: border-box;
     background-color: white;
@@ -287,4 +287,50 @@ color: #E0B612;
 
 #callerPart{
     margin: 0 auto;
+}
+
+#transferCall input{
+    border: none;
+}
+
+.info {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 20px;
+    max-width: 400px;
+}
+.info td, .info th {
+    padding: 8px;
+}
+.info tr:nth-child(even){background-color: #f2f2f2;}
+
+.info th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+.pos a{
+    text-decoration: none;
+    color: #dddddd;
+    padding: 10px;
+}
+.pos a:hover{
+    text-decoration: none;
+    color: #dddddd;
+}
+.pos{
+    text-decoration: none;
+    color: #dddddd;
+    padding: 10px;
+}
+.pos :hover{
+    text-decoration: none;
+    color: #dddddd;
+}
+
+.border{
+    border: none
 }

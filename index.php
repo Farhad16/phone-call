@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Call</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+<?php
+    include ('head.php');
+?>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -81,13 +84,18 @@
             </div>
             <div class="col-md-4" id="transferPart">
                 <div id="transferCall">
-                    <p id="companyDuration"><label id="companyMinutes">00</label>:<label id="companySeconds">00</label>
-                    </p>
-                    <p id="totalCost"></p>
                     <p id="operator"></p>
                     <p id="tranferNumber"></p>
+                    <p id="companyDuration"><label id="companyMinutes">00</label>:<label id="companySeconds">00</label>
+                    </p>
                     <button id="transfer" onclick="transferCall()">Transfer Call</button>
-                    <button id="dismiss" style="background-color: red;" onclick="dismiss()">Dismiss</button>
+                    <form action="callHistory.php" method="POST">
+                        <input type="hidden" id="totalTime" name="duration">
+                        <input type="hidden" id="operatorNumber" name="operatorNumber">
+                        <input type="hidden" id="operatorName" name="operatorName">
+                        <input type="hidden" id="cost" name="cost">
+                        <button type="submit"   id="dismiss" style="background-color: red;" onclick="dismiss()">Dismiss</button>
+                   </form>
                 </div>
             </div>
             <div class="col-md-4">
@@ -125,6 +133,8 @@
     <script src="main.js">
 
     </script>
+
+</body>
 </body>
 
 </html>

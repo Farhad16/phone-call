@@ -7,17 +7,7 @@ function phoneCall() {
     document.getElementById('numbers').style.pointerEvents = 'none';
     document.getElementById('okBtn').style.display = "none";
 
-
-
-    const phoneNumber = document.getElementById('phoneNumber');
-    const operatorShow = document.getElementById('operator');
-    const transferNumber = document.getElementById('tranferNumber');
-    transferNumber.innerText = "";
-    phoneNumber.innerText = "";
-    operatorShow.innerText = "";
-
     const inputNumber = document.getElementById('inputPin').value;
-
 
     const operator = inputNumber.slice(0, 3);
     if (inputNumber.length == 11 && (operator === "017" ||
@@ -25,33 +15,23 @@ function phoneCall() {
         operator === "014" || operator === "019" || operator === "016" || operator === "015")) {
 
         if (operator === "017" || operator === "013") {
-            operatorShow.innerText = "Grameenphone";
-            phoneNumber.innerText = inputNumber;
-            transferNumber.innerText = inputNumber;
+            assignNumberAndOperator("Grameenphone");
             tranferPartOpen();
         }
         else if (operator === "018") {
-            operatorShow.innerText = "Robi";
-            phoneNumber.innerText = inputNumber;
-            transferNumber.innerText = inputNumber;
+            assignNumberAndOperator("Robi");
             tranferPartOpen();
         }
         else if (operator === "014" || operator === "019") {
-            operatorShow.innerText = "Banglalink";
-            transferNumber.innerText = inputNumber;
-            phoneNumber.innerText = inputNumber;
+            assignNumberAndOperator("Banglalink");
             tranferPartOpen();
         }
         else if (operator === "016") {
-            operatorShow.innerText = "Airtel";
-            transferNumber.innerText = inputNumber;
-            phoneNumber.innerText = inputNumber;
+            assignNumberAndOperator("Airtel");
             tranferPartOpen();
         }
         else if (operator === "015") {
-            operatorShow.innerText = "Teletalk";
-            transferNumber.innerText = inputNumber;
-            phoneNumber.innerText = inputNumber;
+            assignNumberAndOperator("Teletalk")
             tranferPartOpen();
         }
         else {
@@ -64,6 +44,22 @@ function phoneCall() {
     }
 }
 
+function assignNumberAndOperator(nameOfOperator) {
+    const inputNumber = document.getElementById('inputPin').value;
+
+    const phoneNumber = document.getElementById('phoneNumber');
+    const operatorShow = document.getElementById('operator');
+    const transferNumber = document.getElementById('tranferNumber');
+    const operatorNumber = document.getElementById('operatorNumber');
+    const operatorName = document.getElementById('operatorName');
+
+
+    operatorShow.innerText = nameOfOperator;
+    operatorName.value = nameOfOperator
+    transferNumber.innerText = inputNumber;
+    phoneNumber.innerText = inputNumber;
+    operatorNumber.value = inputNumber;
+}
 
 //transfer Call
 
@@ -106,7 +102,7 @@ function displayBlock() {
 function callCut() {
     document.getElementById('callCutBtn').style.display = 'none';
     document.getElementById('receiverCallSummary').style.display = 'block';
-    document.getElementById('callingTitle').style.display = 'none';
+
 
     document.getElementById('okBtn').style.display = "block";
     document.getElementById('phoneNumber').style.display = "none";
@@ -174,24 +170,22 @@ var stopTimes;
 function callReceive() {
     document.getElementById('callReceiveBtn').style.display = "none";
 
-    const callerMinutes = document.getElementById("callerMinutes");
-    const callerSeconds = document.getElementById("callerSeconds");
     const receiverMinutes = document.getElementById("receiverMinutes");
     const receiverSeconds = document.getElementById("receiverSeconds");
     const companyMinutes = document.getElementById("companyMinutes");
     const companySeconds = document.getElementById("companySeconds");
 
 
+
     stopTimes = setInterval(setTime, 1000);
 
     function setTime() {
         ++totalSeconds;
-        callerSeconds.innerHTML = pad(totalSeconds % 60);
-        callerMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
         receiverSeconds.innerHTML = pad(totalSeconds % 60);
         receiverMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
         companySeconds.innerHTML = pad(totalSeconds % 60);
         companyMinutes.innerHTML = pad(parseInt(totalSeconds / 60));
+
     }
 
     function pad(val) {
@@ -210,26 +204,32 @@ function stopTime() {
     const operator = document.getElementById("operator").innerText;
     const bill = calBill(operator, totalSeconds);
     const taka = bill / 100;
-    let duration = document.getElementById('duration')
-    let companyDuration = document.getElementById('companyDuration')
-    duration.innerText = `Duration   ${duration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
+
+    // const duration = document.getElementById('duration');
+    const companyDuration = document.getElementById('companyDuration');
+    const totalTime = document.getElementById("totalTime");
+    const cost = document.getElementById("cost");
+    totalTime.value = companyDuration.innerText;
+    console.log(totalTime.value);
+    cost.value = taka.toFixed(2);
+    // duration.innerText = `Duration   ${duration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
     companyDuration.innerText = `Duration   ${companyDuration.innerText} \n See Cost Tk  ${taka.toFixed(2)}`;
 }
 
 function calBill(operator, time) {
     if (operator == 'Grameenphone') {
-        return time * 1.7;
+        return time * 1.9;
     }
     else if (operator == 'Banglalink') {
-        return time * 1.5;
+        return time * 1.8;
     }
     else if (operator == 'Robi') {
-        return time * 1.1;
+        return time * 1.5;
     }
     else if (operator == 'Airtel') {
-        return time * 1.2;
+        return time * 1.5;
     }
     else if (operator == 'Teletalk') {
-        return time * 1.6;
+        return time * 1.7;
     }
 }
